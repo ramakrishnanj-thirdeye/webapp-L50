@@ -18,7 +18,7 @@ const Login = () => {
     };
 
     return (
-        <div className="container vh-100 d-flex justify-content-center align-items-center bg-light">
+        <div className="vh-100 d-flex justify-content-center align-items-center bg-light">
             <div className="row w-100 justify-content-center">
                 <div className="col-md-8 col-sm-10">
                     <div className="card shadow-lg border-0 rounded-3">
@@ -36,7 +36,7 @@ const Login = () => {
                             <div className="col-md-6 bg-white">
                                 <div className="p-5">
                                     <div className="text-center mb-4">
-                                        <h1 className="h4 text-primary fw-bold">Welcome Back!</h1>
+                                        <h1 className="h4 text-primary fw-bold">Welcome!</h1>
                                         <p className="text-muted">Please login to your account</p>
                                     </div>
 
