@@ -1,0 +1,119 @@
+/* Sidebar Styles */
+.custom-sidebar {
+    position: fixed;
+    top: 60px; /* Start below the navbar */
+    left: 0; /* Open by default on large screens */
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(to bottom, #00172b, #002a4d, #004a75, #003e6c); /* Stronger gradient */
+    color: white;
+    transition: left 0.3s ease; /* Smooth transition */
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+    font-family: 'Arial', sans-serif;
+    overflow-y: scroll;
+}
+
+
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.sidebar-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-content ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    font-size: 16px;
+}
+
+.sidebar-content ul li:hover {
+    background-color: #34495e;
+    border-radius: 4px;
+}
+
+.sidebar-content ul li i {
+    margin-right: 15px;
+    font-size: 18px;
+    color: #ecf0f1; /* Lighter color for icons */
+}
+
+/* Submenu Styles */
+.submenu {
+    padding-left: 20px; /* Indentation for submenus */
+    margin-top: 10px; /* Add space between menu and submenu */
+}
+
+.submenu li {
+    padding: 12px 0;
+    font-size: 14px; /* Smaller font size for submenus */
+    color: #bdc3c7; /* Lighter color for submenus */
+}
+
+.submenu li:hover {
+    background-color: #3a5666; /* Darker color on hover */
+    border-radius: 4px;
+}
+
+.submenu li i {
+    margin-right: 10px;
+    color: #bdc3c7; /* Lighter icon color for submenus */
+}
+
+/* Active Menu Item */
+.sidebar-content ul li.active {
+    background-color: #1abc9c; /* Highlight active menu items */
+    color: white;
+}
+
+.sidebar-content ul li.active i {
+    color: white; /* Change icon color for active menu */
+}
+
+/* Icon rotation for submenu toggle */
+.fa-chevron-up,
+.fa-chevron-down {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Hamburger Styles for mobile */
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1100; /* Ensure it's above the content */
+}
+
+@media (max-width: 768px) {
+    /* Sidebar hidden on mobile */
+    .custom-sidebar {
+        left: -300px; /* Initially hidden */
+    }
+
+    .custom-sidebar.closed {
+        left: -300px; /* Hidden by default on small screens */
+    }    
+
+    .custom-sidebar.open {
+        left: 0; /* Open on mobile when clicked */
+    }
+
+    /* Show hamburger icon on mobile */
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1200; /* On top of sidebar */
+    }
+}
