@@ -24,7 +24,6 @@ function Navbar({ toggleSidebar }) {
                     />
                 </div>
             </a>
-
             {/* Custom User Dropdown */}
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
