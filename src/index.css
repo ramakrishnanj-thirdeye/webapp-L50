@@ -32,7 +32,7 @@ video {
 /* Layout.css */
 .play-button {
   height: 20px;
-  width: 60px;
+  width: 40px;
   position: fixed;
   top: 80px;
   right: 20px;
@@ -52,6 +52,35 @@ video {
 .play-button:hover {
   background-color: #007bff; /* Darker blue on hover */
   cursor: pointer;
+}
+
+
+/* Reverse Play Button */
+.reverse-play-button {
+  height: 20px;
+  width: 40px;
+  z-index: 1000;
+  padding: 20px 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  /* background-color: #1173c9; Same style as play button */
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+ 
+/* Icon inside the reverse button */
+.reverse-play-button i {
+  margin-right: 5px; /* Space between the icon and the counter number */
+}
+ 
+/* Hover effect for reverse play button */
+.reverse-play-button:hover {
+  background-color: #007bff; /* Darker gray on hover */
+  cursor: pointer;
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 /* Container to hold both sidebar and content */
