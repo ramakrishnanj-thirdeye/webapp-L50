@@ -2,10 +2,10 @@
 .custom-sidebar {
     position: fixed;
     top: 60px; /* Start below the navbar */
-    left: 0; /* Open by default on large screens */
+    left: 0;
     width: 300px;
     height: 100%;
-    background: linear-gradient(to bottom, #00172b, #002a4d, #004a75, #003e6c); /* Stronger gradient */
+    background: linear-gradient(to bottom, #00172b, #002a4d, #004a75, #003e6c); /* Strong gradient */
     color: white;
     transition: left 0.3s ease; /* Smooth transition */
     z-index: 1000;
@@ -14,8 +14,6 @@
     font-family: 'Arial', sans-serif;
     overflow-y: scroll;
 }
-
-
 
 .sidebar-content {
     padding: 20px;
@@ -27,21 +25,42 @@
     margin: 0;
 }
 
-.sidebar-content ul li {
+/* Primary Menu Styles */
+.sidebar-content ul > li {
     padding: 15px 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease, padding-left 0.3s ease;
     font-size: 16px;
+    margin-top: auto;
 }
 
-.sidebar-content ul li:hover {
-    background-color: #34495e;
+/* Hover and Active States for Primary Menu */
+.sidebar-content ul > li:hover {
+    background-color: #447da0e8; /* Light blue for hover */
+    color: #ffffff;
+    font-weight: bold;
     border-radius: 4px;
 }
 
-.sidebar-content ul li i {
+/* Active State for General Items (Excluding Specific Ones) */
+.sidebar-content ul > li:not(.no-background).active {
+    background-color: rgba(60, 99, 140, 0.7); /* Active state background */
+    font-weight: bold;
+    color: #ffffff; /* Text color */
+    border-radius: 4px;
+}
+
+/* Specific Styling for "System Architecture", "Users", and "Makers" */
+.sidebar-content ul > li.no-background.active {
+    background-color: transparent; /* No background for active state */
+    color: white; /* Retain white text */
+    font-weight: normal; /* No bolding */
+}
+
+/* Icons for Primary Menu */
+.sidebar-content ul > li i {
     margin-right: 15px;
     font-size: 18px;
     color: #ecf0f1; /* Lighter color for icons */
@@ -50,17 +69,25 @@
 /* Submenu Styles */
 .submenu {
     padding-left: 20px; /* Indentation for submenus */
-    margin-top: 10px; /* Add space between menu and submenu */
+    margin-top: 30px;
+    display: block; /* Ensure submenus are visible */
 }
 
+/* Submenu Items */
 .submenu li {
-    padding: 12px 0;
-    font-size: 14px; /* Smaller font size for submenus */
-    color: #bdc3c7; /* Lighter color for submenus */
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white; /* Bright white text for default state */ 
+    transition: background-color 0.3s ease;
 }
 
-.submenu li:hover {
-    background-color: #3a5666; /* Darker color on hover */
+/* Hover and Active States for Submenu Items */
+.submenu li:hover,
+.submenu li.active {
+    background-color: rgba(12, 159, 159, 0.901); /* Slightly darker blue for hover and active */
+    color: #ffffff; /* Darker blue text for active state */
+    font-weight: bold;
     border-radius: 4px;
 }
 
@@ -69,24 +96,45 @@
     color: #bdc3c7; /* Lighter icon color for submenus */
 }
 
-/* Active Menu Item */
-.sidebar-content ul li.active {
-    background-color: #1abc9c; /* Highlight active menu items */
-    color: white;
+/* Dashboard and Finale Video Default State */
+.primary.dashboard,
+.primary.final-video {
+    background-color: transparent; /* Default: no background */
+    color: white; /* Default: white text */
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: normal; /* Default font weight */
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.sidebar-content ul li.active i {
-    color: white; /* Change icon color for active menu */
+/* Active State for Dashboard and Finale Video */
+.primary.dashboard.active,
+.primary.final-video.active {
+    background-color: rgba(51, 115, 169, 0.9); /* Same as submenu active background */
+    color: #ffffff; /* Same active text color as submenu */
+    font-weight: bold; /* Bold text when active */
+    border-radius: 4px;
 }
 
-/* Icon rotation for submenu toggle */
+/* Dashboard and Finale Video: Hover when Active */
+.primary.dashboard.active:hover,
+.primary.final-video.active:hover {
+    background-color: rgba(51, 115, 169, 0.9); /* Slightly darker hover effect */
+    color: #ffffff; /* Slightly darker blue text for hover */
+}
+
+/* Icon Rotation for Submenu Toggle */
 .fa-chevron-up,
 .fa-chevron-down {
     margin-left: auto;
     transition: transform 0.3s ease;
 }
 
-/* Hamburger Styles for mobile */
+/* Hamburger Menu for Mobile */
 .hamburger-menu {
     display: none;
     font-size: 30px;
@@ -102,7 +150,7 @@
 
     .custom-sidebar.closed {
         left: -300px; /* Hidden by default on small screens */
-    }    
+    }
 
     .custom-sidebar.open {
         left: 0; /* Open on mobile when clicked */
@@ -116,4 +164,12 @@
         left: 20px;
         z-index: 1200; /* On top of sidebar */
     }
+
+    /* Remove active background for System Architecture, Users, Makers */
+.sidebar-content ul > li.no-background.active {
+    background-color: transparent;
+    color: white;
+    font-weight: normal; /* Keep font weight normal */
+}
+
 }
