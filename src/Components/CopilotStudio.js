@@ -38,7 +38,7 @@ function Copilotstudio() {
               id="demoframe"
               style={{ height: "calc(100vh - 56px)", width: "100%" }}
               sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-              src="https://regale.cloud/thirdeye-data/play/3777/power-platform-copilot-studio-maker#/0/0"
+              src="https://www.regale.cloud/thirdeye-data/play/3777/power-platform-copilot-studio-maker#/0/0"
               title="Copilot Studio Demo"
               onLoad={handleIframeLoad} // Triggered when iframe is fully loaded
             ></iframe>

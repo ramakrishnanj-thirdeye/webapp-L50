@@ -1,5 +1,7 @@
 import React from 'react'
-import img from '../assets/L50-Overview diagram.png'
+// Fix the image path - make sure it exactly matches your file name
+// If your file has a space in it, either rename it to remove the space or use the exact name
+import img from '../assets/L50-Overview diagram.png'  // This path must match your actual file location
 
 function WorkflowOverview() {
   return (
@@ -20,6 +22,5 @@ function WorkflowOverview() {
     </div>
   );
 }
-
 
 export default WorkflowOverview

@@ -1,175 +1,165 @@
-/* Sidebar Styles */
 .custom-sidebar {
-    position: fixed;
-    top: 60px; /* Start below the navbar */
-    left: 0;
-    width: 300px;
-    height: 100%;
-    background: linear-gradient(to bottom, #00172b, #002a4d, #004a75, #003e6c); /* Strong gradient */
-    color: white;
-    transition: left 0.3s ease; /* Smooth transition */
-    z-index: 1000;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    padding-top: 20px;
-    font-family: 'Arial', sans-serif;
-    overflow-y: scroll;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 260px;
+  height: calc(100% - 60px);
+  background: linear-gradient(180deg, #bdc5c8, #bdc5c8, #bdc5c8, #bdc5c8);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', sans-serif;
+  overflow-y: auto;
+  padding-top: 8px;
 }
 
 .sidebar-content {
-    padding: 20px;
+  padding: 4px;
 }
 
 .sidebar-content ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Primary Menu Styles */
-.sidebar-content ul > li {
-    padding: 15px 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease, padding-left 0.3s ease;
-    font-size: 16px;
-    margin-top: auto;
+.menu-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  margin-bottom: 2px;
 }
 
-/* Hover and Active States for Primary Menu */
-.sidebar-content ul > li:hover {
-    background-color: #447da0e8; /* Light blue for hover */
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 4px;
+.menu-item i {
+  width: 20px;
+  margin-right: 12px;
+  font-size: 16px;
+  color: #4a5568;
 }
 
-/* Active State for General Items (Excluding Specific Ones) */
-.sidebar-content ul > li:not(.no-background).active {
-    background-color: rgba(60, 99, 140, 0.7); /* Active state background */
-    font-weight: bold;
-    color: #ffffff; /* Text color */
-    border-radius: 4px;
+.menu-item:hover {
+  background-color: rgba(237, 242, 247, 0.8);
+  border-left-color: #3182ce;
 }
 
-/* Specific Styling for "System Architecture", "Users", and "Makers" */
-.sidebar-content ul > li.no-background.active {
-    background-color: transparent; /* No background for active state */
-    color: white; /* Retain white text */
-    font-weight: normal; /* No bolding */
+.menu-item.active {
+  background-color: rgba(235, 248, 255, 0.8);
+  border-left-color: #2b6cb0;
+  color: #2b6cb0;
 }
 
-/* Icons for Primary Menu */
-.sidebar-content ul > li i {
-    margin-right: 15px;
-    font-size: 18px;
-    color: #ecf0f1; /* Lighter color for icons */
+.menu-item.active i {
+  color: #2b6cb0;
 }
 
-/* Submenu Styles */
 .submenu {
-    padding-left: 20px; /* Indentation for submenus */
-    margin-top: 30px;
-    display: block; /* Ensure submenus are visible */
+  background-color: rgba(248, 250, 252, 0.6);
+  margin: 0;
+  padding: 0;
 }
 
-/* Submenu Items */
-.submenu li {
-    padding: 12px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    color: white; /* Bright white text for default state */ 
-    transition: background-color 0.3s ease;
+.submenu-item {
+  padding: 8px 12px 8px 44px;
+  font-size: 13px;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  margin-bottom: 1px;
 }
 
-/* Hover and Active States for Submenu Items */
-.submenu li:hover,
-.submenu li.active {
-    background-color: rgba(12, 159, 159, 0.901); /* Slightly darker blue for hover and active */
-    color: #ffffff; /* Darker blue text for active state */
-    font-weight: bold;
-    border-radius: 4px;
+/* Rest of the CSS remains unchanged */
+
+.submenu-item:hover {
+  background-color: #edf2f7;
+  color: #3182ce;
+  border-left-color: #3182ce;
 }
 
-.submenu li i {
-    margin-right: 10px;
-    color: #bdc3c7; /* Lighter icon color for submenus */
+.submenu-item.active {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+  border-left-color: #2b6cb0;
+  font-weight: 500;
 }
 
-/* Dashboard and Finale Video Default State */
-.primary.dashboard,
-.primary.final-video {
-    background-color: transparent; /* Default: no background */
-    color: white; /* Default: white text */
-    font-size: 14px;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-weight: normal; /* Default font weight */
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.submenu-icon {
+  margin-left: auto;
+  font-size: 12px;
+  color: #4a5568;
+  transition: transform 0.3s ease;
 }
 
-/* Active State for Dashboard and Finale Video */
-.primary.dashboard.active,
-.primary.final-video.active {
-    background-color: rgba(51, 115, 169, 0.9); /* Same as submenu active background */
-    color: #ffffff; /* Same active text color as submenu */
-    font-weight: bold; /* Bold text when active */
-    border-radius: 4px;
+.menu-item.open {
+  background-color: #f8fafc;
 }
 
-/* Dashboard and Finale Video: Hover when Active */
-.primary.dashboard.active:hover,
-.primary.final-video.active:hover {
-    background-color: rgba(51, 115, 169, 0.9); /* Slightly darker hover effect */
-    color: #ffffff; /* Slightly darker blue text for hover */
+.menu-item.open .submenu-icon {
+  transform: rotate(180deg);
 }
 
-/* Icon Rotation for Submenu Toggle */
-.fa-chevron-up,
-.fa-chevron-down {
-    margin-left: auto;
-    transition: transform 0.3s ease;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Hamburger Menu for Mobile */
-.hamburger-menu {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1100; /* Ensure it's above the content */
+.submenu {
+  animation: slideIn 0.2s ease-out;
 }
 
-@media (max-width: 768px) {
-    /* Sidebar hidden on mobile */
-    .custom-sidebar {
-        left: -300px; /* Initially hidden */
-    }
-
-    .custom-sidebar.closed {
-        left: -300px; /* Hidden by default on small screens */
-    }
-
-    .custom-sidebar.open {
-        left: 0; /* Open on mobile when clicked */
-    }
-
-    /* Show hamburger icon on mobile */
-    .hamburger-menu {
-        display: block;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 1200; /* On top of sidebar */
-    }
-
-    /* Remove active background for System Architecture, Users, Makers */
-.sidebar-content ul > li.no-background.active {
-    background-color: transparent;
-    color: white;
-    font-weight: normal; /* Keep font weight normal */
+@media screen and (max-width: 1024px) {
+  .custom-sidebar {
+    width: 240px;
+  }
 }
 
+@media screen and (max-width: 768px) {
+  .custom-sidebar {
+    left: -260px;
+  }
+  .custom-sidebar.open {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .custom-sidebar {
+    width: 100%;
+    left: -100%;
+  }
+  .menu-item {
+    padding: 12px 16px;
+  }
+  .submenu-item {
+    padding: 10px 16px 10px 48px;
+  }
+}
+
+.custom-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-sidebar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.custom-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

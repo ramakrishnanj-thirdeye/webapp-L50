@@ -38,7 +38,7 @@ function DataSecurityPrivacy() {
               id="demoframe"
               style={{ height: "calc(100vh - 56px)", width: "100%" }}
               sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-              src="https://regale.cloud/thirdeye-data/play/3774/power-platform-data-security-and-privacy-user-end#/0/0"
+              src="https://www.regale.cloud/thirdeye-data/play/3774/power-platform-data-security-and-privacy-user-end#/0/0"
               title="Power Platform Data Security and Privacy"
               onLoad={handleIframeLoad} // Triggered when iframe is fully loaded
             ></iframe>

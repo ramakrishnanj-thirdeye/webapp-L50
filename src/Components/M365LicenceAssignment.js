@@ -38,7 +38,7 @@ function M365LicenceAssignment() {
               id="demoframe"
               style={{ height: "calc(100vh - 56px)", width: "100vw" }}
               sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-              src="https://regale.cloud/thirdeye-data/play/3792/power-platform-m365-Licence-assignment-maker#/0/0"
+              src="https://www.regale.cloud/thirdeye-data/play/3792/power-platform-m365-licence-assignment-maker#/0/0"
               title="M365 Licence Assignment"
               onLoad={handleIframeLoad} // Triggered when iframe is fully loaded
             ></iframe>
