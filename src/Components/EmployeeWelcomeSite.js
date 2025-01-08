@@ -39,7 +39,7 @@ function EmployeeWelcomeSite() {
               id="demoframe"
               style={{ height: "calc(100vh - 56px)", width: "100%" }}
               sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-              src="https://regale.cloud/thirdeye-data/play/3788/power-platform-employee-welcome-site-power-page-maker#/0/0"
+              src="https://www.regale.cloud/thirdeye-data/play/3788/power-platform-employee-welcome-site-power-page-maker#/0/0"
               title="Employee Welcome Site"
               onLoad={handleIframeLoad} // Triggered when iframe is fully loaded
             ></iframe>

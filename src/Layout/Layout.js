@@ -10,12 +10,12 @@ import EmployeeWelcomeSite from '../Components/EmployeeWelcomeSite';
 import EnhanceHrProductivity from '../Components/EnhanceHrProductivity';
 import Home from '../Components/Home';
 import ImproveEfficienciesIt from '../Components/ImproveEfficienciesIt';
-import L50DemoUser from '../Components/L50DemoUser';
 import M365LicenceAssignment from '../Components/M365LicenceAssignment';
 import PowerPlatformFinale from '../Components/PowerPlatformFinale';
 import ProcessFlow from '../Components/ProcessFlow';
 import ReduceCostRisk from '../Components/ReduceCostAndRisk';
 import WorkflowOverview from '../Components/WorkflowOverview';
+import UserVideo from '../Components/UserVideo';
 
 // Static list of screens
 const screens = [
@@ -37,29 +37,42 @@ const screens = [
 ];
 
 function Layout() {
-    const [screen, setScreen] = useState('dashboard'); // Current active screen
-    const [step, setStep] = useState(0); // Current step in the play sequence
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Manage sidebar visibility
+    // State hooks
+    const [screen, setScreen] = useState('dashboard');
+    const [step, setStep] = useState(0);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [history, setHistory] = useState([]); // Track navigation history
+    const [isBackHovered, setIsBackHovered] = useState(false);
+    const [isPlayHovered, setIsPlayHovered] = useState(false);
 
-    // Update the step when the screen changes
-    useEffect(() => {
-        const currentStep = screens.indexOf(screen);
-        if (currentStep !== -1) {
-            setStep(currentStep);
-        }
-    }, [screen]);
+// Update step when screen changes
+useEffect(() => {
+    const currentStep = screens.indexOf(screen);
+    if (currentStep !== -1) {
+      setStep(currentStep);
+    }
+  }, [screen]); // screens is now defined outside the component, so it doesn't need to be in dependencies
 
-    // Handle play button click to move to the next screen
-    const handlePlayButtonClick = () => {
-        const nextStep = (step + 1) % screens.length;
-        setScreen(screens[nextStep]);
-    };
+  const handlePlayButtonClick = () => {
+    const nextStep = (step + 1) % screens.length;
+    setHistory([...history, screen]);
+    setScreen(screens[nextStep]);
+  };
 
-    // Handle reverse play button click to move to the previous screen
-    const handleReversePlayButtonClick = () => {
-        const prevStep = (step - 1 + screens.length) % screens.length;
-        setScreen(screens[prevStep]);
-    };
+  const handleSidebarMenuClick = (newScreen) => {
+    if (newScreen !== screen) {
+      setHistory([...history, screen]);
+      setScreen(newScreen);
+    }
+  };
+
+  const handleBackButtonClick = () => {
+    if (history.length > 0) {
+      const previousScreen = history[history.length - 1];
+      setHistory(history.slice(0, -1));
+      setScreen(previousScreen);
+    }
+  };
 
     // Render the component based on the active screen
     const renderScreen = () => {
@@ -77,7 +90,7 @@ function Layout() {
             case 'data-security':
                 return <DataSecurityPrivacy />;
             case 'user-video':
-                return <L50DemoUser />;
+                return <UserVideo />;
             case 'm365-licence-assignment':
                 return <M365LicenceAssignment />;
             case 'copilot-in-power-automate-video':
@@ -99,67 +112,100 @@ function Layout() {
         }
     };
 
-    // Toggle sidebar visibility
+    // JSX layout
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
-    };
-
-    return (
+      };
+    
+      return (
         <div>
-            {/* Navbar */}
-            <Navbar toggleSidebar={toggleSidebar} />
-
-            <div className="layout-container">
-                {/* Sidebar */}
-                <div>
-                    <CustomSidebar
-                        setScreen={setScreen}
-                        activeScreen={screen} // Pass the current screen to the sidebar
-                        isSidebarOpen={isSidebarOpen}
-                        toggleSidebar={toggleSidebar}
-                    />
-                </div>
-
-                {/* Main Content Area */}
-                <div className="main-content">
-                    {renderScreen()}
-
-                    {/* Play Button */}
-                    <button
-                        className="btn btn-secondary play-button"
-                        onClick={handlePlayButtonClick}
-                        style={{
-                            position: 'fixed',
-                            top: '80px',
-                            right: '20px',
-                        }}
-                    >
-                        <i className="fa fa-play" aria-hidden="true"></i> {step + 1}
-                    </button>
-
-                    {/* Reverse Play Button */}
-                    <button
-                        className="btn btn-secondary reverse-play-button"
-                        onClick={handleReversePlayButtonClick}
-                        style={{
-                            position: 'absolute', // Corrected duplication
-                            top: '10px',          // Adjusted to avoid conflict
-                            left: '20px',         // Adjusted to avoid conflict
-                            zIndex: 1000,
-                            width: '40px',
-                            height: '40px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            padding: '0',
-                        }}
-                    >
-                        <i className="fa fa-arrow-left" aria-hidden="true"></i>
-                    </button>
-                </div>
+          <Navbar toggleSidebar={toggleSidebar} />
+          <div className="layout-container">
+            <CustomSidebar 
+              setScreen={handleSidebarMenuClick} 
+              isSidebarOpen={isSidebarOpen} 
+              toggleSidebar={toggleSidebar} 
+              activeScreen={screen} 
+            />
+            <div 
+              className="main-content fluent-container" 
+              style={{ 
+                position: 'relative',
+                background: `
+                  conic-gradient(
+                    from 45deg at 50% 50%,
+                    rgba(135, 206, 235, 0.6) 0deg,
+                    rgba(32, 229, 173, 0.64) 90deg,
+                    rgba(33, 162, 191, 0.4) 180deg,
+                    rgba(13, 78, 108, 0.4) 270deg,
+                    rgba(135, 206, 235, 0.6) 360deg
+                  ),
+                  linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.05)
+                  )
+                `,
+                backdropFilter: 'blur(16px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: `
+                  0 4px 30px rgba(0, 0, 0, 0.1),
+                  inset 0 0 80px rgba(255, 255, 255, 0.1)
+                `,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {renderScreen()}
+              <button 
+                className="btn btn-secondary back-button" 
+                onClick={handleBackButtonClick}
+                onMouseEnter={() => setIsBackHovered(true)}
+                onMouseLeave={() => setIsBackHovered(false)}
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  left: '20px',
+                  zIndex: 1000,
+                  width: '35px',
+                  height: '35px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '0',
+                  backgroundColor: isBackHovered ? 'blue' : '',
+                  color: isBackHovered ? 'white' : '',
+                  transition: 'background-color 0.3s ease',
+                }}
+              >
+                <i className="fa fa-arrow-left" aria-hidden="true" style={{ fontSize: '12px' }}></i>
+              </button>
+              <button 
+                className="btn btn-secondary play-button"
+                onClick={handlePlayButtonClick}
+                onMouseEnter={() => setIsPlayHovered(true)}
+                onMouseLeave={() => setIsPlayHovered(false)}
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '20px',
+                  width: '30px',
+                  height: '30px',
+                  transition: 'background-color 0.3s ease',
+                  backgroundColor: isPlayHovered ? 'blue' : '',
+                  color: isPlayHovered ? 'white' : '',
+                }}
+              >
+                <i className="fa fa-play" aria-hidden="true" style={{ fontSize: '12px' }}></i>
+                {step + 1}
+              </button>
             </div>
+          </div>
         </div>
-    );
-}
-
-export default Layout;
+      );
+    }
+    
+    export default Layout;

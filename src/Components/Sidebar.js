@@ -33,216 +33,175 @@ function CustomSidebar({ isSidebarOpen, setScreen, activeScreen, toggleSidebar }
     const isSubmenuActive = (screens) => screens.includes(activeScreen);
 
     return (
-        <div className={`custom-sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
+        <div className={`custom-sidebar ${isSidebarOpen ? 'open' : ''}`}>
             <div className="sidebar-content">
                 <ul>
                     {/* Dashboard */}
-            <li
-                className={`primary dashboard ${isActive('dashboard') ? 'active' : ''}`}
-                onClick={() => {
-                    setScreen('dashboard');
-                    toggleSidebar();
-                }}
-            >
-                <i className="fas fa-tachometer-alt"></i> Dashboard
-            </li>
-
-            {/* System Architecture */}
-            <li
-                className={`primary no-background ${
-                    isSubmenuActive(['workflow-overview', 'process-flow']) ? 'active' : ''
-                }`}
-                onClick={() => setOpenSubmenu(openSubmenu === 'system-architecture' ? null : 'system-architecture')}
-            >
-                <i className="fas fa-cogs"></i> System Architecture
-                <i
-                    className={`fa ${
-                        openSubmenu === 'system-architecture' ? 'fa-chevron-up' : 'fa-chevron-down'
-                    }`}
-                ></i>
-            </li>
-            {openSubmenu === 'system-architecture' && (
-                <ul className="submenu">
                     <li
-                        className={isActive('workflow-overview') ? 'active' : ''}
+                        className={`menu-item ${isActive('dashboard') ? 'active' : ''}`}
                         onClick={() => {
-                            setScreen('workflow-overview');
+                            setScreen('dashboard');
                             toggleSidebar();
                         }}
                     >
-                        Workflow Overview
+                        <i className="fas fa-tachometer-alt"></i> Dashboard
                     </li>
+
+                    {/* System Architecture */}
                     <li
-                        className={isActive('process-flow') ? 'active' : ''}
+                        className={`menu-item ${
+                            isSubmenuActive(['workflow-overview', 'process-flow']) ? 'active' : ''
+                        }`}
+                        onClick={() =>
+                            setOpenSubmenu(openSubmenu === 'system-architecture' ? null : 'system-architecture')
+                        }
+                    >
+                        <i className="fas fa-cogs"></i> System Architecture
+                        <i
+                            className={`submenu-icon fas fa-chevron-down ${
+                                openSubmenu === 'system-architecture' ? 'rotate' : ''
+                            }`}
+                        ></i>
+                    </li>
+                    {openSubmenu === 'system-architecture' && (
+                        <ul className="submenu">
+                            <li
+                                className={`submenu-item ${isActive('workflow-overview') ? 'active' : ''}`}
+                                onClick={() => {
+                                    setScreen('workflow-overview');
+                                    toggleSidebar();
+                                }}
+                            >
+                                Workflow Overview
+                            </li>
+                            <li
+                                className={`submenu-item ${isActive('process-flow') ? 'active' : ''}`}
+                                onClick={() => {
+                                    setScreen('process-flow');
+                                    toggleSidebar();
+                                }}
+                            >
+                                Process Flow
+                            </li>
+                        </ul>
+                    )}
+
+                    {/* Users */}
+                    <li
+                        className={`menu-item ${
+                            isSubmenuActive([
+                                'enhance-hr-productivity',
+                                'improve-efficiencies-it',
+                                'data-security',
+                                'user-video',
+                            ])
+                                ? 'active'
+                                : ''
+                        }`}
+                        onClick={() => setOpenSubmenu(openSubmenu === 'users' ? null : 'users')}
+                    >
+                        <i className="fas fa-user"></i> Users
+                        <i className={`submenu-icon fas fa-chevron-down ${openSubmenu === 'users' ? 'rotate' : ''}`}></i>
+                    </li>
+                    {openSubmenu === 'users' && (
+                        <ul className="submenu">
+                            <li
+                                className={`submenu-item ${isActive('enhance-hr-productivity') ? 'active' : ''}`}
+                                onClick={() => {
+                                    setScreen('enhance-hr-productivity');
+                                    toggleSidebar();
+                                }}
+                            >
+                                Enhance HR Productivity Click-through
+                            </li>
+                            <li
+                                className={`submenu-item ${isActive('improve-efficiencies-it') ? 'active' : ''}`}
+                                onClick={() => {
+                                    setScreen('improve-efficiencies-it');
+                                    toggleSidebar();
+                                }}
+                            >
+                                Improve Efficiencies IT Click-through
+                            </li>
+                            <li
+                                className={`submenu-item ${isActive('data-security') ? 'active' : ''}`}
+                                onClick={() => {
+                                    setScreen('data-security');
+                                    toggleSidebar();
+                                }}
+                            >
+                                Data Security Click-through
+                            </li>
+                            <li
+                                className={`submenu-item ${isActive('user-video') ? 'active' : ''}`}
+                                onClick={() => {
+                                    setScreen('user-video');
+                                    toggleSidebar();
+                                }}
+                            >
+                                User Video
+                            </li>
+                        </ul>
+                    )}
+
+                    {/* Makers */}
+                    <li
+                        className={`menu-item ${
+                            isSubmenuActive([
+                                'm365-licence-assignment',
+                                'copilot-in-power-automate-video',
+                                'copilot-studio',
+                                'copilot-studio-video',
+                                'employee-welcome-site',
+                                'copilot-power-pages-video',
+                                'reduce-cost-risk',
+                            ])
+                                ? 'active'
+                                : ''
+                        }`}
+                        onClick={() => setOpenSubmenu(openSubmenu === 'makers' ? null : 'makers')}
+                    >
+                        <i className="fas fa-users"></i> Makers
+                        <i className={`submenu-icon fas fa-chevron-down ${openSubmenu === 'makers' ? 'rotate' : ''}`}></i>
+                    </li>
+                    {openSubmenu === 'makers' && (
+                        <ul className="submenu">
+                            {[
+                                { screen: 'm365-licence-assignment', label: 'M365 License Automation through Copilot Click-through' },
+                                { screen: 'copilot-in-power-automate-video', label: 'Copilot in Power Automate Video' },
+                                { screen: 'copilot-studio', label: 'Copilot Studio Click-through' },
+                                { screen: 'copilot-studio-video', label: 'Copilot Studio Video' },
+                                { screen: 'employee-welcome-site', label: 'Employee Welcome Site Click-through' },
+                                { screen: 'copilot-power-pages-video', label: 'Copilot in Power Pages Video' },
+                                { screen: 'reduce-cost-risk', label: 'Reduce Cost Risk Click-through' },
+                            ].map(({ screen, label }) => (
+                                <li
+                                    key={screen}
+                                    className={`submenu-item ${isActive(screen) ? 'active' : ''}`}
+                                    onClick={() => {
+                                        setScreen(screen);
+                                        toggleSidebar();
+                                    }}
+                                >
+                                    {label}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+
+                    {/* Finale Video */}
+                    <li
+                        className={`menu-item ${isActive('finale-video') ? 'active' : ''}`}
                         onClick={() => {
-                            setScreen('process-flow');
+                            setScreen('finale-video');
                             toggleSidebar();
                         }}
                     >
-                        Process Flow
+                        <i className="fas fa-video"></i> Finale Video
                     </li>
                 </ul>
-            )}
-
-            {/* Users */}
-            <li
-                className={`primary no-background ${
-                    isSubmenuActive([
-                        'enhance-hr-productivity',
-                        'improve-efficiencies-it',
-                        'data-security',
-                        'user-video',
-                    ])
-                        ? 'active'
-                        : ''
-                }`}
-                onClick={() => setOpenSubmenu(openSubmenu === 'users' ? null : 'users')}
-            >
-                <i className="fas fa-user"></i> Users
-                <i className={`fa ${openSubmenu === 'users' ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
-            </li>
-            {openSubmenu === 'users' && (
-                <ul className="submenu">
-                    <li
-                        className={isActive('enhance-hr-productivity') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('enhance-hr-productivity');
-                            toggleSidebar();
-                        }}
-                    >
-                        Enhance HR Productivity
-                    </li>
-                    <li
-                        className={isActive('improve-efficiencies-it') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('improve-efficiencies-it');
-                            toggleSidebar();
-                        }}
-                    >
-                        Improve Efficiencies IT
-                    </li>
-                    <li
-                        className={isActive('data-security') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('data-security');
-                            toggleSidebar();
-                        }}
-                    >
-                        Data Security
-                    </li>
-                    <li
-                        className={isActive('user-video') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('user-video');
-                            toggleSidebar();
-                        }}
-                    >
-                        User Video
-                    </li>
-                </ul>
-            )}
-
-            {/* Makers */}
-            <li
-                className={`primary no-background ${
-                    isSubmenuActive([
-                        'm365-licence-assignment',
-                        'copilot-in-power-automate-video',
-                        'copilot-studio',
-                        'copilot-studio-video',
-                        'employee-welcome-site',
-                        'copilot-power-pages-video',
-                        'reduce-cost-risk',
-                    ])
-                        ? 'active'
-                        : ''
-                }`}
-                onClick={() => setOpenSubmenu(openSubmenu === 'makers' ? null : 'makers')}
-            >
-                <i className="fas fa-users"></i> Makers
-                <i className={`fa ${openSubmenu === 'makers' ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
-            </li>
-            {openSubmenu === 'makers' && (
-                <ul className="submenu">
-                    <li
-                        className={isActive('m365-licence-assignment') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('m365-licence-assignment');
-                            toggleSidebar();
-                        }}
-                    >
-                        M365 Licence Assignment
-                    </li>
-                    <li
-                        className={isActive('copilot-in-power-automate-video') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('copilot-in-power-automate-video');
-                            toggleSidebar();
-                        }}
-                    >
-                        Copilot in Power Automate Video
-                    </li>
-                    <li
-                        className={isActive('copilot-studio') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('copilot-studio');
-                            toggleSidebar();
-                        }}
-                    >
-                        Copilot Studio
-                    </li>
-                    <li
-                        className={isActive('copilot-studio-video') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('copilot-studio-video');
-                            toggleSidebar();
-                        }}
-                    >
-                        Copilot Studio Video
-                    </li>
-                    <li
-                        className={isActive('employee-welcome-site') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('employee-welcome-site');
-                            toggleSidebar();
-                        }}
-                    >
-                        Employee Welcome Site
-                    </li>
-                    <li
-                        className={isActive('copilot-power-pages-video') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('copilot-power-pages-video');
-                            toggleSidebar();
-                        }}
-                    >
-                        Copilot Power Pages Video
-                    </li>
-                    <li
-                        className={isActive('reduce-cost-risk') ? 'active' : ''}
-                        onClick={() => {
-                            setScreen('reduce-cost-risk');
-                            toggleSidebar();
-                        }}
-                    >
-                        Reduce Cost Risk
-                    </li>
-                </ul>
-            )}
-
-            {/* Finale Video */}
-            <li
-                className={`primary final-video ${isActive('finale-video') ? 'active' : ''}`}
-                onClick={() => {
-                    setScreen('finale-video');
-                    toggleSidebar();
-                }}
-            >
-                <i className="fas fa-video"></i> Finale Video
-            </li>
-        </ul>
-    </div>
-</div>
+            </div>
+        </div>
     );
 }
 

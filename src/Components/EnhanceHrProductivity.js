@@ -38,7 +38,7 @@ function EnhanceHrProductivity() {
               id="demoframe"
               style={{ height: "calc(100vh - 56px)", width: "100%" }}
               sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-              src="https://regale.cloud/thirdeye-data/play/3794/power-platform-employee-onboarding-user#/0/0"
+              src="https://www.regale.cloud/thirdeye-data/play/3794/power-platform-employee-onboarding-user#/0/0"
               title="Power Platform Employee Onboarding"
               onLoad={handleIframeLoad} // Triggered when iframe is fully loaded
             ></iframe>

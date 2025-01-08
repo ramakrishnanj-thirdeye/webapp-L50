@@ -15,7 +15,7 @@ function CopilotStudioWorking() {
             <div className="card-body d-flex justify-content-center align-items-center p-0">
               <video autoPlay muted controls>
                 <source 
-                  src="https://stdemoassets.blob.core.windows.net/videos/L50/3.%20Microsoft%20Power%20Platform%20-%20Demo%201b%20-%20Copilot%20Studio.mp4" 
+                  src="https://stdemoassets.blob.core.windows.net/videos/L50/Microsoft%20Power%20Platform%20-%20Demo%201b.mp4" 
                   type="video/mp4" 
                 />
                 Your browser does not support the video tag.
